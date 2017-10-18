@@ -12,11 +12,11 @@ song_node * insert(song_node * begin, song_node newnode);//why do you need begin
 
 void print_list(song_node * begin);
 
-song_node * find_artist(song_node * begin, char* artist);
+song_node * find_artist(char* artist);
 
-song_node * find_song(song_node * begin, char* artist);
+song_node * find_song(char* artist);
 
-song_node * random_node(song_node * begin);
+song_node * random_node(song_node * begin);//why would you need any parameters here?
 
 song_node * delete_node(song_node * begin);
 
