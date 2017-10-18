@@ -8,7 +8,7 @@ struct song_node{
 
 song_node * insert_front(song_node * begin, song_node newfront);
 
-song_node * insert(song_node * begin, song_node newnode);
+song_node * insert(song_node * begin, song_node newnode);//why do you need begin???
 
 void print_list(song_node * begin);
 
@@ -20,4 +20,5 @@ song_node * random_node(song_node * begin);
 
 song_node * delete_node(song_node * begin);
 
-void free_list(song_node * begin);
+void free_list();//dont need parameters because it just frees up the list which is the array and theres only one array
+		 //free_node is a different function we will define later 
