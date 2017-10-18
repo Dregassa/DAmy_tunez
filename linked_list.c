@@ -1,6 +1,17 @@
+#include <stdlib.h>
+#include <time.h>
 #include <string.h>
 #include "linked_list.h"
 
+
+int getsize(song_node * begin){
+	int size = 0;
+	while (begin){
+		size++;
+		begin = begin -> next;
+	}
+	return size;
+}
 
 song_node * find_song(song_node * begin, char * artist, char * song){
 	
@@ -40,4 +51,19 @@ song_node * find_first_song(song_node * begin, char * artist){
 	}
 
 	return 0;
+}
+
+song_node * random_node(song_node * begin){
+	
+	int size = getsize(begin);
+
+	srand ( time(NULL) );
+
+	int index = rand() % size;
+
+	for(;i>0;i--){
+		begin = begin -> next;
+	}
+
+	return begin;
 }

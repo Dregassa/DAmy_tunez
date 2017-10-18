@@ -6,6 +6,8 @@ struct song_node{
 
 // begin denotes the beginning of the linked list
 
+int getsize(song_node * begin);
+
 song_node * insert_front(song_node * begin, song_node newfront);
 
 song_node * insert(song_node * begin, song_node newnode);//why do you need begin???
