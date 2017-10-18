@@ -10,6 +10,6 @@ void print_letter(char);
 
 void print_all();
 
-void remove_song(char *song);
+void remove_song(char *song);//this should be easy for you to do if you do the other ones
 
 void remove_all();
