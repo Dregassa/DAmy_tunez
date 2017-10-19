@@ -1,3 +1,8 @@
+#include "linked_list.h"
+
+struct song_node * table[26];
+
+
 void add_song(char *song, char *artist);
 
 struct song_node * find_song(char *song);//you do this
