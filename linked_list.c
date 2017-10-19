@@ -99,3 +99,56 @@ struct song_node * delete_node(struct song_node * begin, struct song_node * deat
 
 
 }
+
+
+struct song_node * insert(struct song_node *begin, struct song_node *new){
+  int counter = 0;
+  struct song_node *placeholder = begin;//creates a placeholder so i dont lose original value of begin                                                                               
+
+  while (begin && strcmp(new->artist,begin->artist) < 0){
+    counter ++;
+    begin = begin->next;
+  }
+  begin = placeholder;
+
+  while (counter){
+    if (counter == 1){
+      new->next = begin->next;
+      begin->next = new;
+    }
+    counter --;
+    begin = begin->next;
+  }
+}
+
+
+
+void insert_front(struct song_node *new,struct song_node *old){
+  new.next = old;
+}
+
+
+void print_list(song_node * begin){
+  int i	= 0;
+  for (;i < 26;i++){
+    struct song_node current = table[i];
+    while (current){
+      printf("%s\n", current->name);
+    }
+  }
+}
+
+
+
+void free_list(song_node * begin){
+  while(begin){
+    struct song_node prev = begin;
+    begin->next	= begin;
+    free(prev);
+    prev = NULL:
+  }
+}
+
+
+
+
