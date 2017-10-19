@@ -1,6 +1,12 @@
-void add_song(char *song){
-  
+void add_song(char *song, char *artist){
+  int i	= artist[0] - 'a';
+  struct song_node *begin = table[i];
+  struct song_node *add;
+  add->name = song;
+  add->artist =	artist;
+  insert(begin,add);
 }
+
 
 
 void print_songs(char *artist){
