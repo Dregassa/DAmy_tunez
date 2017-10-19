@@ -4,7 +4,7 @@
 #include "linked_list.h"
 
 
-int getsize(song_node * begin){
+int getsize(struct song_node * begin){
 	int size = 0;
 	while (begin){
 		size++;
@@ -13,9 +13,9 @@ int getsize(song_node * begin){
 	return size;
 }
 
-song_node * find_song(song_node * begin, char * artist, char * song){
+struct song_node * find_song(struct song_node * begin, char * artist, char * song){
 	
-	song_node * search = find_first_song(begin, artist); 
+	struct song_node * search = find_first_song(begin, artist); 
         /*taking advantage that the LL is alphabetized, we first find
 	  the first song by an artist then linearly traverse from there*/	
 
@@ -38,7 +38,7 @@ song_node * find_song(song_node * begin, char * artist, char * song){
 	return 0;
 }
 
-song_node * find_first_song(song_node * begin, char * artist){
+struct song_node * find_first_song(struct song_node * begin, char * artist){
 
 	while(begin){
 
@@ -53,7 +53,7 @@ song_node * find_first_song(song_node * begin, char * artist){
 	return 0;
 }
 
-song_node * random_node(song_node * begin){
+struct song_node * random_node(struct song_node * begin){
 	
 	int size = getsize(begin);
 
@@ -61,9 +61,41 @@ song_node * random_node(song_node * begin){
 
 	int index = rand() % size;
 
-	for(;i>0;i--){
+	for(;index>0;index--){
 		begin = begin -> next;
 	}
 
 	return begin;
+}
+
+struct song_node * delete_node(struct song_node * begin, struct song_node * deathrow){
+
+	/*my intuition tells me there might be a cleaner way to code
+	this, but I dont see it right now :( */
+
+	if (begin == deathrow){ 
+		/*freeing the beginning node might cause issues when the fucntion is invoked externally
+		e.g. song_node * original = delete_node(original, deathrow); would free original then try to 
+		re-initialize it*/
+		struct song_node * next_node = begin -> next;
+		free(deathrow);
+		return next_node;
+	}
+
+	struct song_node * traverse = begin;
+
+	while(traverse -> next){
+		if (traverse -> next == deathrow){
+			traverse -> next = deathrow -> next;
+			free(deathrow);
+			return begin;
+		}
+
+		traverse = traverse -> next;
+	}
+
+	return begin; //deathrow not found in LL, should maybe throw an exception or at least put a print statement here
+
+
+
 }
