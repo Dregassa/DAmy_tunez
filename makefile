@@ -11,8 +11,8 @@ main.o:
 	gcc -c main.c playlist.c
 
 clean:
-	rm *o
-	rm *gch
+	rm *.o
+	rm *.gch
 	rm *~
 
 run: all
