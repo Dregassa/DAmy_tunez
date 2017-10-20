@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #include "playlist.h"
 
 void add_song(char *song, char *artist){
@@ -56,7 +57,12 @@ struct song_node * remove_song(char * artist, char * song){
 	return delete_node(table[index], search);
 
 }
-struct *song_node[] (){ //returns list of all songs
+int table_empty (){
+	int i = 0;
+	for (;i<26;i++){
+		if (table[i]){return 0;}
+	}
+	return 1;
 
 }
 void shuffle(int num_songs){ //not even distribution by a long shot		
@@ -67,12 +73,14 @@ void shuffle(int num_songs){ //not even distribution by a long shot
 
 	for (;num_songs > 0; num_songs--){
 
-		srand (time(NULL) );
+		srand ( time(NULL) );
 		int index = rand() % 26;	
-		int i = 0;
-		for (;i<26;i){
-			printf
+		while( !table[index] ){ //find a non null pointer
+			index = rand() % 26;	
 		}
+		printf("[%s : %s]", table[index] -> artist, table[index] -> name);
+
+	}
 
 
 }
