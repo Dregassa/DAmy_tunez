@@ -11,7 +11,7 @@ struct song_node * find_artist(char *artist);//you do this
 
 void print_songs(char *artist);
 
-void print_letter(char);
+void print_letter(char *);
 
 void print_all();
 

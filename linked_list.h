@@ -8,9 +8,9 @@ struct song_node{
 
 int getsize(struct song_node * begin);
 
-struct song_node * insert_front(struct song_node * begin, struct song_node newfront);
+void insert_front(struct song_node * new, struct song_node * old);
 
-struct song_node * insert(struct song_node * begin, struct song_node newnode);//why do you need begin???
+void insert(struct song_node * begin, struct song_node * new);//why do you need begin???
 
 void print_list(struct song_node * begin);
 

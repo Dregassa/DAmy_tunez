@@ -1,11 +1,14 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "playlist.h"
 
 void add_song(char *song, char *artist){
   int i	= artist[0] - 'a';
   struct song_node *begin = table[i];
   struct song_node *add = (struct song_node *)malloc(sizeof(struct song_node));
-  add->name = song;
-  add->artist =	artist;
+  strcpy(add->name,song);
+  strcpy(add->artist,artist);
   insert(begin,add);
 }
 
@@ -31,11 +34,11 @@ void print_songs(char *artist){
 
 
 void print_letter(char *letter){
-  int i = letter - 'a';
+  int i = letter[0] - 'a';
   struct song_node * begin = table[i];
   while (begin){
-    printf("Artist: %s , Song: %s\n", begin->artist, begin->song);
-    begin = negin->next;
+    printf("Artist: %s , Song: %s\n", begin->artist, begin->name);
+    begin = begin->next;
   }
 }
 

@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include <time.h>
 #include <string.h>
 #include "linked_list.h"
@@ -101,7 +102,7 @@ struct song_node * delete_node(struct song_node * begin, struct song_node * deat
 }
 
 
-struct song_node * insert(struct song_node *begin, struct song_node *new){
+void insert(struct song_node *begin, struct song_node *new){
   int counter = 0;
   struct song_node *placeholder = begin;//creates a placeholder so i dont lose original value of begin                                                                               
 
@@ -124,11 +125,11 @@ struct song_node * insert(struct song_node *begin, struct song_node *new){
 
 
 void insert_front(struct song_node *new,struct song_node *old){
-  new.next = old;
+  new->next = old;
 }
 
 
-void print_list(song_node * begin){
+void print_list(struct song_node * begin){
   while	(begin){
     printf("Artist: %s\n Song: %s\n\n",	begin->artist, begin->name);
     begin = begin->next;
@@ -139,10 +140,10 @@ void print_list(song_node * begin){
 
 void free_list(struct song_node * begin){
   while(begin){
-    struct song_node prev = begin;
+    struct song_node *prev = begin;
     begin->next	= begin;
     free(prev);
-    prev = NULL:
+    prev = NULL;
   }
 }
 
