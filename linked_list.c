@@ -128,7 +128,7 @@ void insert_front(struct song_node *new,struct song_node *old){
 }
 
 
-void print_list(song_node * begin){
+void print_list(struct song_node * begin){
   int i	= 0;
   for (;i < 26;i++){
     struct song_node current = table[i];
@@ -140,7 +140,7 @@ void print_list(song_node * begin){
 
 
 
-void free_list(song_node * begin){
+void free_list(struct song_node * begin){
   while(begin){
     struct song_node prev = begin;
     begin->next	= begin;

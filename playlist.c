@@ -1,3 +1,5 @@
+#include "playlist.h"
+
 void add_song(char *song, char *artist){
   int i	= artist[0] - 'a';
   struct song_node *begin = table[i];
