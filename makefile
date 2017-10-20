@@ -8,7 +8,7 @@ playlist.o:
 	gcc -c playlist.c playlist.h linked_list.h
 
 main.o:
-	gcc -c main.c playlist.c
+	gcc -c -g main.c playlist.c
 
 clean:
 	rm *.o
