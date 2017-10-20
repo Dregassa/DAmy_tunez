@@ -157,7 +157,7 @@ void insert_front(struct song_node *new,struct song_node *old){
 */
 
 struct song_node * insert_front(struct song_node * list, struct song_node * newnode){
-  newfront -> next = list;
+  newnode -> next = list;
   return newnode;
 }
 
