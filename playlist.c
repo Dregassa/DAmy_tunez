@@ -4,7 +4,8 @@
 #include <time.h>
 #include "playlist.h"
 
-void add_song(char *song, char *artist){
+
+void add_song(struct song_node * table[], char *song, char *artist){
   int i	= artist[0] - 'a';
   struct song_node *begin = table[i];
   struct song_node *add = (struct song_node *)malloc(sizeof(struct song_node));
@@ -13,19 +14,19 @@ void add_song(char *song, char *artist){
   insert(begin,add);
 }
 
-struct song_node * find_in_table(char * artist, char * song){
+struct song_node * find_in_table(struct song_node * table[], char * artist, char * song){
 	int index = artist[0]- 'a';
 	return find_song(table[index], artist, song);
 }
 
-struct song_node * find_artist(char * artist){
+struct song_node * find_artist(struct song_node * table[], char * artist){
 	int index = artist[0] - 'a';
 	return find_first_song(table[index], artist);
 
 }
 
 
-void print_songs(char *artist){
+void print_songs(struct song_node * table[], char *artist){
   int i = artist[0] - 'a';
   struct song_node * begin = table[i];
   while (begin){
@@ -34,7 +35,7 @@ void print_songs(char *artist){
 }
 
 
-void print_letter(char *letter){
+void print_letter(struct song_node * table[], char *letter){
   int i = letter[0] - 'a';
   struct song_node * begin = table[i];
   while (begin){
@@ -44,20 +45,20 @@ void print_letter(char *letter){
 }
 
 
-void print_all(){
+void print_all(struct song_node * table[]){
   int i = 0;
   for (;i <26;i++){
     print_list(table[i]);
   }
 }
 
-struct song_node * remove_song(char * artist, char * song){
-	struct song_node * search = find_in_table(artist, song);
+struct song_node * remove_song(struct song_node * table[], char * artist, char * song){
+	struct song_node * search = find_in_table(table, artist, song);
        	int index = artist[0] - 'a';
 	return delete_node(table[index], search);
 
 }
-int table_empty (){
+int table_empty (struct song_node * table[]){
 	int i = 0;
 	for (;i<26;i++){
 		if (table[i]){return 0;}
@@ -65,8 +66,8 @@ int table_empty (){
 	return 1;
 
 }
-void shuffle(int num_songs){ //not even distribution by a long shot		
-	if (table_empty()){
+void shuffle(struct song_node * table[], int num_songs){ //not even distribution by a long shot		
+	if (table_empty(table)){
 		printf("No songs in playlist");
 		return;
 	}
