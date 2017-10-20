@@ -101,7 +101,7 @@ struct song_node * delete_node(struct song_node * begin, struct song_node * deat
 
 }
 
-
+/*
 void insert(struct song_node *begin, struct song_node *new){
   int counter = 0;
   struct song_node *placeholder = begin;//creates a placeholder so i dont lose original value of begin                                                                               
@@ -121,12 +121,46 @@ void insert(struct song_node *begin, struct song_node *new){
     begin = begin->next;
   }
 }
+*/
+
+struct song_node * insert(struct song_node * list, struct song_node * newnode){//list cannot be NULL
+        struct song_node * begin = list; // keeps track of beginning
+        struct song_node * prev;
+
+        while ( list && (strcmp( list -> artist, newnode -> artist) < 0 )){//alphabetize by artist
+                prev = list;
+                list = list -> next;
+        }
+
+        if (strcmp(list -> artist, newnode -> artist) == 0){ // if artists are the same
+                while ( list && (strcmp( list -> name, newnode -> name) < 0 )){// aplhabetize by song name
+                        prev = list;
+                        list = list -> next;
+                }
+        }
+//------------------------------------------------------------------------
+        if (list == begin){//if newnode goes at beginning
+                return insert_front(list, newnode);
+        }
+
+        else{// if newnode goes in middle or end
+                prev -> next = insert_front(list, newnode); // ... -> prev --> newnode --> begin -> ...
+                return begin;
+        }
+}
 
 
-
+/*
 void insert_front(struct song_node *new,struct song_node *old){
   new->next = old;
 }
+*/
+
+struct song_node * insert_front(struct song_node * list, struct song_node * newfront){
+  newfront -> next = list;
+  return newfront;
+
+
 
 
 void print_list(struct song_node * begin){
@@ -139,12 +173,13 @@ void print_list(struct song_node * begin){
 
 
 void free_list(struct song_node * begin){
-  while(begin){
-    struct song_node *prev = begin;
-    begin->next	= begin;
-    free(prev);
-    prev = NULL;
-  }
+	struct song_node *prev;   
+	while(begin){
+	    prev = begin;
+	    begin->next	= begin;
+	    free(prev);
+	    prev = NULL;
+	  }
 }
 
 
