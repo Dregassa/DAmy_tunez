@@ -17,4 +17,6 @@ void print_all();
 
 struct song_node * remove_song(char * artist, char * song);//this should be easy for you to do if you do the other ones
 
+void shuffle(int num_songs);
+
 void remove_all();

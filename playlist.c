@@ -56,3 +56,23 @@ struct song_node * remove_song(char * artist, char * song){
 	return delete_node(table[index], search);
 
 }
+struct *song_node[] (){ //returns list of all songs
+
+}
+void shuffle(int num_songs){ //not even distribution by a long shot		
+	if (table_empty()){
+		printf("No songs in playlist");
+		return;
+	}
+
+	for (;num_songs > 0; num_songs--){
+
+		srand (time(NULL) );
+		int index = rand() % 26;	
+		int i = 0;
+		for (;i<26;i){
+			printf
+		}
+
+
+}

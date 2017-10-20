@@ -58,6 +58,10 @@ struct song_node * random_node(struct song_node * list){
 	
 	int size = getsize(list);
 
+	if (size == 0){
+		return NULL;
+	}
+
 	srand ( time(NULL) );
 
 	int index = rand() % size;
