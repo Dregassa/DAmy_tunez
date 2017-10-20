@@ -3,7 +3,7 @@
 void add_song(char *song, char *artist){
   int i	= artist[0] - 'a';
   struct song_node *begin = table[i];
-  struct song_node *add;
+  struct song_node *add = (struct song_node *)malloc(sizeof(struct song_node));
   add->name = song;
   add->artist =	artist;
   insert(begin,add);
