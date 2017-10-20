@@ -7,6 +7,16 @@ void add_song(char *song, char *artist){
   insert(begin,add);
 }
 
+struct song_node * find_in_table(char * artist, char * song){
+	int index = artist[0]- 'a';
+	return find_song(table[index], artist, song);
+}
+
+struct song_node * find_artist(char * artist){
+	int index = artist[0] - 'a';
+	return find_first_song(table[index], artist);
+
+}
 
 
 void print_songs(char *artist){
@@ -33,4 +43,11 @@ void print_all(){
   for (;i <26;i++){
     print_list(table[i]);
   }
+}
+
+struct song_node * remove_song(char * artist, char * song){
+	struct song_node * search = find_in_table(artist, song);
+       	int index = artist[0] - 'a';
+	return delete_node(table[index], search);
+
 }
