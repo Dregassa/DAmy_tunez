@@ -5,18 +5,18 @@
 #include "linked_list.h"
 
 
-int getsize(struct song_node * begin){
+int getsize(struct song_node * list){
 	int size = 0;
-	while (begin){
+	while (list){
 		size++;
-		begin = begin -> next;
+		list = list -> next;
 	}
 	return size;
 }
 
-struct song_node * find_song(struct song_node * begin, char * artist, char * song){
+struct song_node * find_song(struct song_node * list, char * artist, char * song){
 	
-	struct song_node * search = find_first_song(begin, artist); 
+	struct song_node * search = find_first_song(list, artist); 
         /*taking advantage that the LL is alphabetized, we first find
 	  the first song by an artist then linearly traverse from there*/	
 
@@ -39,63 +39,63 @@ struct song_node * find_song(struct song_node * begin, char * artist, char * son
 	return 0;
 }
 
-struct song_node * find_first_song(struct song_node * begin, char * artist){
+struct song_node * find_first_song(struct song_node * list, char * artist){
 
-	while(begin){
+	while(list){
 
-		if (! strcmp(begin->artist, artist) ){ //if they are equivalent
-			return begin;
+		if (! strcmp(list -> artist, artist) ){ //if they are equivalent
+			return list;
 		}
 		else {
-			begin = begin->next;
+			list = list ->next;
 		}
 	}
 
 	return 0;
 }
 
-struct song_node * random_node(struct song_node * begin){
+struct song_node * random_node(struct song_node * list){
 	
-	int size = getsize(begin);
+	int size = getsize(list);
 
 	srand ( time(NULL) );
 
 	int index = rand() % size;
 
 	for(;index>0;index--){
-		begin = begin -> next;
+		list = list -> next;
 	}
 
-	return begin;
+	return list;
 }
 
-struct song_node * delete_node(struct song_node * begin, struct song_node * deathrow){
+struct song_node * delete_node(struct song_node * list, struct song_node * deathrow){
 
 	/*my intuition tells me there might be a cleaner way to code
 	this, but I dont see it right now :( */
 
-	if (begin == deathrow){ 
+	if (list == deathrow){ 
 		/*freeing the beginning node might cause issues when the fucntion is invoked externally
 		e.g. song_node * original = delete_node(original, deathrow); would free original then try to 
 		re-initialize it*/
-		struct song_node * next_node = begin -> next;
+		struct song_node * next_node = list -> next;
 		free(deathrow);
 		return next_node;
 	}
 
-	struct song_node * traverse = begin;
+	struct song_node * traverse = list;
 
 	while(traverse -> next){
 		if (traverse -> next == deathrow){
 			traverse -> next = deathrow -> next;
 			free(deathrow);
-			return begin;
+			return list;
 		}
 
 		traverse = traverse -> next;
 	}
 
-	return begin; //deathrow not found in LL, should maybe throw an exception or at least put a print statement here
+	return list; //deathrow not found in LL, should maybe throw an exception or at least put a print statement here
 
 
 
@@ -156,27 +156,27 @@ void insert_front(struct song_node *new,struct song_node *old){
 }
 */
 
-struct song_node * insert_front(struct song_node * list, struct song_node * newfront){
+struct song_node * insert_front(struct song_node * list, struct song_node * newnode){
   newfront -> next = list;
-  return newfront;
+  return newnode;
 
 
 
 
-void print_list(struct song_node * begin){
-  while	(begin){
-    printf("Artist: %s\n Song: %s\n\n",	begin->artist, begin->name);
-    begin = begin->next;
+void print_list(struct song_node * list){
+  while	(list){
+    printf("Artist: %s\n Song: %s\n\n",	list -> artist, list -> name);
+    list = list -> next;
   }
 }
 
 
 
-void free_list(struct song_node * begin){
+void free_list(struct song_node * list){
 	struct song_node *prev;   
-	while(begin){
-	    prev = begin;
-	    begin->next	= begin;
+	while(list){
+	    prev = list;
+	    list ->next	= list;
 	    free(prev);
 	    prev = NULL;
 	  }
