@@ -129,7 +129,7 @@ void insert(struct song_node *begin, struct song_node *new){
 
 struct song_node * insert(struct song_node * list, struct song_node * newnode){//list cannot be NULL
 	if (!list){
-		insert_front(list,newnode);
+		return insert_front(list,newnode);
 	}
         struct song_node * begin = list; // keeps track of beginning
         struct song_node * prev;
