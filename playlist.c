@@ -7,11 +7,12 @@
 
 void add_song(struct song_node * table[], char *song, char *artist){
   int i	= artist[0] - 'a';
-  struct song_node *begin = table[i];
+  //struct song_node *begin = table[i];
   struct song_node *add = (struct song_node *)malloc(sizeof(struct song_node));
   strcpy(add->name,song);
   strcpy(add->artist,artist);
-  insert(begin,add);
+  table[i] = insert(begin,add);
+  //return table;
 }
 
 struct song_node * find_in_table(struct song_node * table[], char * artist, char * song){
