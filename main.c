@@ -21,6 +21,12 @@ int main(){
   add_song(table, "trash", "justin beiber"); //just kidding!
   print_all(table);
   shuffle(table, 3);
+  
+  add_song(table, "cant stop the feeling", "justin timberlake");
+
+  //print_songs(table,"justin beiber");
+  //print_letter(table,"j");
+
   remove_all(table);
   printf("---------\n");
   print_all(table);
