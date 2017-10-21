@@ -139,7 +139,7 @@ struct song_node * insert(struct song_node * list, struct song_node * newnode){/
                 list = list -> next;
         }
 
-        if (strcmp(list -> artist, newnode -> artist) == 0){ // if artists are the same
+        if (list && strcmp(list -> artist, newnode -> artist) == 0){ // if artists are the same
                 while ( list && (strcmp( list -> name, newnode -> name) < 0 )){// aplhabetize by song name
                         prev = list;
                         list = list -> next;
