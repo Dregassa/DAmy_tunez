@@ -73,14 +73,14 @@ void shuffle(struct song_node * table[], int num_songs){ //not even distribution
 		return;
 	}
 
-	for (;num_songs > 0; num_songs--){
+	srand ( time(NULL) );
 
-		srand ( time(NULL) );
+	for (;num_songs > 0; num_songs--){
 		int index = rand() % 26;	
 		while( !table[index] ){ //find a non null pointer
 			index = rand() % 26;	
 		}
-		printf("[%s : %s]", table[index] -> artist, table[index] -> name);
+		printf("[%s : %s]\n", table[index] -> artist, table[index] -> name);
 
 	}
 
