@@ -13,7 +13,6 @@ main.o:
 clean:
 	rm *.o
 	rm *.gch
-	rm *~
 
 run: all
 	./libtest

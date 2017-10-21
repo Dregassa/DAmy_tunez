@@ -16,5 +16,13 @@ int main(){
   print_all(table);
   print_list(find_artist(table, "michael jackson"));
   print_list(find_in_table(table,"michael jackson", "thriller"));
+  remove_song(table, "michael jackson", "thriller");
+  print_all(table);
+  add_song(table, "trash", "justin beiber"); //just kidding!
+  print_all(table);
+  //add_song(table, "can't stop the feeling", "justin timberlake");
+
+  //print_songs(table,"justin beiber");
+  //print_letter(table,"j");
   free(table);
 }
