@@ -35,5 +35,5 @@ int main(){
 
   //print_songs(table,"justin beiber");
   //print_letter(table,"j");
-  //free(table);
+  free(table);
 }
