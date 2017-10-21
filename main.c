@@ -8,7 +8,7 @@ int main(){
   for (;i<26;i++){
   	table[i] = 0;
   }*/
-  printf("%d", 'q' - 'a');
+  //printf("%d", 'q' - 'a');
   add_song(table, "We Will Rock You", "queen");
   print_all(table);
   add_song(table, "thriller", "michael jackson");
@@ -24,8 +24,8 @@ int main(){
   
   add_song(table, "cant stop the feeling", "justin timberlake");
 
-  //print_songs(table,"justin beiber");
-  //print_letter(table,"j");
+  print_songs(table,"justin beiber");
+  print_letter(table,"j");
 
   remove_all(table);
   printf("---------\n");

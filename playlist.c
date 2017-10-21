@@ -29,9 +29,10 @@ struct song_node * find_artist(struct song_node * table[], char * artist){
 
 void print_songs(struct song_node * table[], char *artist){
   int i = artist[0] - 'a';
-  struct song_node * begin = table[i];
-  while (begin){
-    if (strcmp(begin->artist,artist)==0) printf("%s\n", begin->name);
+  struct song_node * list = table[i];
+  while (list){
+    if (strcmp(list->artist,artist)==0) printf("%s\n", list->name);
+    list = list -> next;
   }
 }
 
