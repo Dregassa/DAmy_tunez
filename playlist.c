@@ -11,7 +11,7 @@ void add_song(struct song_node * table[], char *song, char *artist){
   struct song_node *add = (struct song_node *)malloc(sizeof(struct song_node));
   strcpy(add->name,song);
   strcpy(add->artist,artist);
-  table[i] = insert(begin,add);
+  table[i] = insert(table[i], add);
   //return table;
 }
 
