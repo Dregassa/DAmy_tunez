@@ -11,5 +11,8 @@ int main(){
   printf("%d", 'q' - 'a');
   add_song(table, "We Will Rock You", "queen");
   print_all(table);
+  add_song(table, "thriller", "michael jackson");
+  add_song(table, "the way you make me feel", "michael jackson");
+  print_all(table);
   free(table);
 }
