@@ -14,5 +14,7 @@ int main(){
   add_song(table, "thriller", "michael jackson");
   add_song(table, "the way you make me feel", "michael jackson");
   print_all(table);
+  print_list(find_artist(table, "michael jackson"));
+  print_list(find_in_table(table,"michael jackson", "thriller"));
   free(table);
 }
