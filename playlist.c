@@ -84,5 +84,11 @@ void shuffle(struct song_node * table[], int num_songs){ //not even distribution
 
 	}
 
+}
 
+void remove_all(struct song_node * table[]){
+	int i = 0;
+	for(;i<26;i++){
+		free_list(table[i]);	
+	}
 }

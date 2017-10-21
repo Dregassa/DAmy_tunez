@@ -183,7 +183,7 @@ void free_list(struct song_node * list){
 	struct song_node *prev;   
 	while(list){
 	    prev = list;
-	    list ->next	= list;
+	    list = list -> next;
 	    free(prev);
 	    prev = NULL;
 	  }
